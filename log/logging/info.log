@@ -1,2 +1,1 @@
-2023/07/19 17:48:24 logger.go:24: LogFile : ./log/logging/info.log
-2023/07/19 17:48:24 db.go:26: Erro ao conectar com banco de dados
+2023/07/24 08:32:41 logger.go:24: LogFile : ./log/logging/info.log

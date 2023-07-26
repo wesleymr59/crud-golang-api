@@ -36,13 +36,13 @@ func CreateNewOrder(c *gin.Context) {
 
 }
 
-func UpdateNewOrder(c *gin.Context) {
+func UpdateOrder(c *gin.Context) {
 	var order models.Order
 	id := c.Params.ByName("id")
 	if result := database.DB.First(&order, id); result.Error != nil {
 		fmt.Println("caiu no erro")
 		c.JSON(http.StatusNotFound, gin.H{
-			"error": "Nao achou nada no sql"})
+			"error": "Usuario nao encontrado"})
 		return
 	}
 
@@ -53,5 +53,19 @@ func UpdateNewOrder(c *gin.Context) {
 	}
 
 	database.DB.Model(&order).UpdateColumns(order)
+	c.JSON(http.StatusOK, order)
+}
+
+func DeleteOrder(c *gin.Context) {
+	fmt.Println("delete")
+	var order models.Order
+	id := c.Params.ByName("id")
+	if result := database.DB.First(&order, id); result.Error != nil {
+		c.JSON(http.StatusNotFound, gin.H{
+			"error": "Erro ao deletar usuario"})
+		return
+	}
+	fmt.Println("delete")
+	database.DB.Model(&order).Delete(&order, id)
 	c.JSON(http.StatusOK, order)
 }

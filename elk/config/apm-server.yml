@@ -1,0 +1,11 @@
+apm-server:
+  host: "0.0.0.0:8200" # Endereço no qual o APM Server irá escutar
+  rum:
+    enabled: true # Habilita a coleta de dados do Real User Monitoring (RUM)
+  kibana:
+    enabled: true # Habilita a integração com o Kibana
+
+output.elasticsearch:
+  hosts: ["elasticsearch:9200"] # Endereço do Elasticsearch para onde os dados serão enviados
+  username: "elastic" # Usuário de autenticação do Elasticsearch (se necessário)
+  password: "wesley" # Senha do usuário de autenticação do Elasticsearch (se necessário)

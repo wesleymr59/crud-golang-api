@@ -1,0 +1,16 @@
+# Arquivo de configuração do Filebeat
+
+filebeat.inputs:
+  - type: log
+    enabled: true
+    paths:
+      - ../../log/logging/info.log
+
+output.elasticsearch:
+  hosts: ["elasticsearch:9200"]
+  username: "elastic"
+  password: "wesley"
+  setup.ilm.overwrite: false # Habilitar a substituição da política ILM
+
+setup.kibana:
+  host: "http://localhost:5601"
